@@ -3,456 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suyesh Engineering | BPCL Approved Vendor</title>
+    <title>Suyesh Engineering | Premier Fabrication & Engineering Solutions</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- 1. THEME VARIABLES --- */
+        /* --- 1. INDUSTRIAL PRESTIGE THEME --- */
         :root {
-            --primary: #002D62;    /* BPCL Corporate Blue */
-            --secondary: #F57C00;  /* Industrial Orange */
-            --accent: #E3F2FD;     /* Light Blue */
-            --dark-text: #1F2933;
-            --light-text: #5E6C84;
-            --bg-light: #F9FAFB;
-            --white: #FFFFFF;
-            --border: #E1E4E8;
-            --max-width: 1200px;
-            --header-height: 70px;
+            /* Palette: Slate Charcoal & Metallic Bronze */
+            --primary-dark: #101820;   /* Deep Industrial Charcoal */
+            --primary-light: #2C3E50;  /* Slate Blue-Grey */
+            --accent-gold: #C5A059;    /* Metallic Bronze/Gold */
+            --accent-hover: #D4B06A;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --bg-off-white: #F4F4F4;
+            --bg-white: #FFFFFF;
+            --border-color: #E0E0E0;
+            --container-width: 1240px;
         }
 
-        /* --- 2. GLOBAL RESET --- */
+        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--dark-text);
-            background-color: var(--bg-light);
+            font-family: 'Manrope', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-off-white);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevents side-scrolling on mobile */
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; color: var(--primary); }
-        a { text-decoration: none; transition: all 0.3s ease; }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; display: block; }
-
+        h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px; color: var(--primary-dark); }
+        
+        /* Container Utility */
         .container {
-            width: 100%;
-            max-width: var(--max-width);
+            width: 90%;
+            max-width: var(--container-width);
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Section Spacing Utilities */
-        .section-padding { padding: 60px 0; }
-        .bg-white { background: var(--white); }
-        .text-center { text-align: center; }
-
-        .section-header { margin-bottom: 40px; text-align: center; }
-        .section-header h2 { font-size: 2rem; position: relative; display: inline-block; padding-bottom: 15px; }
-        .section-header h2::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-            width: 60px; height: 4px; background: var(--secondary);
-        }
-        .section-header p { margin-top: 15px; color: var(--light-text); max-width: 600px; margin-left: auto; margin-right: auto; }
-
-        /* Buttons */
+        /* Button Styles */
         .btn {
-            display: inline-block; padding: 12px 28px;
-            background: var(--secondary); color: var(--white);
-            border-radius: 4px; font-weight: 600; border: none; cursor: pointer;
-            text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.5px;
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--accent-gold);
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
         }
-        .btn:hover { background: #D86900; transform: translateY(-2px); }
+        .btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3); }
 
-        /* --- 3. RESPONSIVE HEADER --- */
+        /* Section Styling */
+        .section-padding { padding: 80px 0; }
+        .bg-white { background: var(--bg-white); }
+        .bg-dark { background: var(--primary-dark); color: white; }
+
+        .section-header { margin-bottom: 60px; text-align: center; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+        .section-header .divider { height: 4px; width: 80px; background: var(--accent-gold); margin: 0 auto 20px; }
+        .section-header p { font-size: 1.1rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+        /* --- 3. HEADER & NAVIGATION --- */
         header {
-            background: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            background: var(--bg-white);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .top-bar {
-            background: var(--primary); color: var(--white);
-            padding: 8px 0; font-size: 0.85rem; text-align: center;
+        .top-ticker {
+            background: var(--primary-dark);
+            color: #bbb;
+            font-size: 0.8rem;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
+        .ticker-content { display: flex; justify-content: space-between; align-items: center; }
 
-        .navbar {
+        .nav-wrapper {
             display: flex; justify-content: space-between; align-items: center;
-            height: var(--header-height);
+            padding: 20px 0;
         }
 
         .logo {
-            font-size: 1.5rem; font-weight: 800; color: var(--primary);
-            display: flex; flex-direction: column; line-height: 1.1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1;
+            font-family: 'Oswald', sans-serif;
         }
-        .logo span { font-size: 0.75rem; color: var(--secondary); font-weight: 600; }
+        .logo span { color: var(--accent-gold); font-size: 1rem; display: block; font-weight: 400; letter-spacing: 2px; margin-top: 5px; }
 
-        .nav-menu { display: flex; gap: 25px; }
-        .nav-menu a { color: var(--dark-text); font-weight: 500; font-size: 0.95rem; }
-        .nav-menu a:hover { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            text-decoration: none; color: var(--primary-dark);
+            font-weight: 600; font-size: 0.95rem; text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--accent-gold); }
 
-        .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--primary); }
+        .hamburger { display: none; font-size: 1.5rem; color: var(--primary-dark); cursor: pointer; }
 
         /* --- 4. HERO SECTION --- */
         .hero {
-            background: linear-gradient(rgba(0, 45, 98, 0.9), rgba(0, 45, 98, 0.8)), 
-                        url('https://placehold.co/1920x1080/002D62/FFFFFF?text=Engineering+Works');
-            background-size: cover; background-position: center;
-            padding: 100px 0 60px;
-            color: var(--white); text-align: center;
-            display: flex; align-items: center; justify-content: center;
-            min-height: 60vh;
+            position: relative;
+            height: 85vh;
+            background: linear-gradient(rgba(16, 24, 32, 0.85), rgba(16, 24, 32, 0.7)), 
+                        url('https://placehold.co/1920x1080/101820/444444?text=Heavy+Engineering+Fabrication');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
         }
-        .hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2; }
-        .hero p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto; }
         
-        .hero-badges { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 20px; }
-        .badge {
-            background: rgba(255,255,255,0.15); padding: 8px 16px; border-radius: 50px;
-            font-size: 0.85rem; border: 1px solid rgba(255,255,255,0.3); display: flex; align-items: center; gap: 8px;
+        .hero-content { max-width: 800px; }
+        .hero-badge {
+            background: rgba(197, 160, 89, 0.2);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 8px 16px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        /* --- 5. STATS GRID (Fix: Stack on Mobile) --- */
-        .stats-container { margin-top: -40px; position: relative; z-index: 10; padding-bottom: 40px; }
-        .stats-grid {
+        .hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; }
+        .hero p { font-size: 1.2rem; color: #ddd; margin-bottom: 40px; border-left: 4px solid var(--accent-gold); padding-left: 20px; }
+
+        /* --- 5. FINANCIAL DASHBOARD (From PDF Page 10 & 11) --- */
+        .financials { margin-top: -80px; position: relative; z-index: 10; padding-bottom: 80px; }
+        .fin-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
-            background: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
+            grid-template-columns: repeat(4, 1fr);
+            background: var(--bg-white);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-top: 5px solid var(--accent-gold);
         }
-        .stat-item {
-            padding: 30px 15px; text-align: center;
-            border-right: 1px solid var(--border);
+        .fin-item {
+            padding: 40px 30px;
+            border-right: 1px solid var(--border-color);
+            text-align: center;
         }
-        .stat-item:last-child { border-right: none; }
-        .stat-item strong { display: block; font-size: 2rem; color: var(--secondary); font-weight: 700; margin-bottom: 5px; }
-        .stat-item span { font-size: 0.9rem; color: var(--light-text); font-weight: 500; }
+        .fin-item:last-child { border-right: none; }
+        .fin-icon { font-size: 2rem; color: var(--accent-gold); margin-bottom: 15px; }
+        .fin-value { font-size: 2.2rem; font-weight: 700; color: var(--primary-dark); font-family: 'Oswald', sans-serif; display: block; }
+        .fin-label { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .fin-growth { color: #27ae60; font-size: 0.85rem; font-weight: 700; display: block; margin-top: 5px; }
 
-        /* --- 6. ABOUT SECTION --- */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .about-text h3 { margin-bottom: 20px; font-size: 1.6rem; }
-        .cert-box {
-            background: var(--accent); padding: 20px; border-radius: 6px; margin-top: 20px;
-            border-left: 4px solid var(--primary); font-size: 0.95rem;
+        /* --- 6. COMPANY PROFILE --- */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-img { position: relative; }
+        .about-img img { width: 100%; border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .about-img::before {
+            content: ''; position: absolute; top: -20px; left: -20px;
+            width: 100px; height: 100px; border-top: 5px solid var(--accent-gold); border-left: 5px solid var(--accent-gold);
         }
-        .cert-box div { margin-bottom: 8px; }
 
-        /* --- 7. SERVICES (Fix: Grid Adaptability) --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Smart Responsive Grid */
-            gap: 25px;
-        }
-        .service-card {
-            background: var(--white); padding: 30px; border-radius: 8px;
-            border: 1px solid var(--border); text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--secondary); }
-        .service-icon { font-size: 2.2rem; color: var(--primary); margin-bottom: 20px; }
-        .service-card h4 { margin-bottom: 10px; font-size: 1.2rem; }
-        .service-card p { font-size: 0.95rem; color: var(--light-text); }
+        .cert-list { margin-top: 30px; }
+        .cert-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding: 15px; background: #fff; border: 1px solid var(--border-color); border-left: 4px solid var(--primary-dark); }
+        .cert-item i { color: var(--accent-gold); font-size: 1.2rem; }
 
-        /* --- 8. PROJECTS (Mobile Stack) --- */
+        /* --- 7. FEATURED PROJECTS (From PDF Page 6 & 7) --- */
         .project-card {
-            background: var(--white); border-radius: 10px; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
-            display: grid; grid-template-columns: 1.2fr 1fr; /* Image wider than text */
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            background: var(--bg-white);
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
-        .project-img { height: 100%; min-height: 250px; }
-        .project-img img { width: 100%; height: 100%; object-fit: cover; }
-        .project-content { padding: 30px; display: flex; flex-direction: column; justify-content: center; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         
-        .po-tag { 
-            background: var(--primary); color: var(--white); font-size: 0.75rem; 
-            padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 15px; align-self: flex-start;
+        .p-image { 
+            background: #eee; 
+            min-height: 300px;
+            position: relative;
         }
-        .project-list { margin-top: 15px; font-size: 0.95rem; }
-        .project-list li { margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; color: var(--light-text); }
-        .project-list i { color: var(--secondary); margin-top: 5px; }
+        .p-image img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .p-content { padding: 40px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .p-badge { 
+            position: absolute; top: 0; right: 0; background: var(--accent-gold); color: white; 
+            padding: 8px 15px; font-size: 0.8rem; font-weight: 700;
+        }
 
-        /* Table Responsive Wrapper */
-        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 30px; border-radius: 8px; border: 1px solid var(--border); }
-        table { width: 100%; border-collapse: collapse; min-width: 600px; background: var(--white); }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
-        th { background: var(--primary); color: var(--white); font-weight: 600; white-space: nowrap; }
-        .val-col { font-weight: 700; color: var(--dark-text); }
+        .p-meta { display: flex; gap: 20px; margin: 15px 0; font-size: 0.9rem; color: var(--text-muted); border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .p-meta span i { color: var(--accent-gold); margin-right: 5px; }
 
-        /* --- 9. FOOTER --- */
-        .footer { background: #111; color: #bbb; padding: 60px 0 20px; font-size: 0.9rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
-        .footer h4 { color: var(--white); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-contact li { margin-bottom: 15px; display: flex; gap: 15px; }
-        .footer-contact i { color: var(--secondary); font-size: 1.1rem; }
-        .footer-bottom { border-top: 1px solid #333; padding-top: 20px; text-align: center; }
+        /* --- 8. WHY BPCL TRUSTS US --- */
+        .trust-section { background: var(--primary-dark); color: white; position: relative; overflow: hidden; }
+        .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
+        .trust-box { 
+            background: rgba(255,255,255,0.05); padding: 30px; border: 1px solid rgba(255,255,255,0.1); 
+            transition: 0.3s;
+        }
+        .trust-box:hover { background: rgba(197, 160, 89, 0.1); border-color: var(--accent-gold); }
+        .trust-box h3 { color: var(--accent-gold); margin-bottom: 15px; font-size: 1.4rem; }
 
-        /* =========================================
-           MOBILE & TABLET OPTIMIZATIONS (The Fixes)
-           ========================================= */
+        /* --- 9. PROJECT TABLES (Data Heavy) --- */
+        .table-wrapper { overflow-x: auto; background: white; padding: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        table { width: 100%; border-collapse: collapse; min-width: 700px; }
+        th { background: var(--primary-light); color: white; padding: 18px; text-align: left; font-family: 'Oswald', sans-serif; letter-spacing: 1px; }
+        td { padding: 15px 18px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+        tr:hover td { background: #fafafa; }
+        .val-cell { font-weight: 700; color: var(--primary-dark); }
+        .po-cell { font-family: 'Courier New', monospace; background: #f4f4f4; padding: 5px 10px; border-radius: 4px; font-size: 0.9rem; color: #555; }
+
+        /* --- 10. FOOTER --- */
+        footer { background: #0b1116; color: #888; padding-top: 80px; font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; padding-bottom: 50px; border-bottom: 1px solid #222; }
+        .footer-logo { font-size: 1.5rem; color: white; font-family: 'Oswald', sans-serif; margin-bottom: 20px; display: block; }
+        .footer h4 { color: white; margin-bottom: 20px; }
+        .footer-contact li { margin-bottom: 15px; display: flex; gap: 15px; align-items: flex-start; }
+        .footer-contact i { color: var(--accent-gold); margin-top: 4px; }
+        .copyright { padding: 20px 0; text-align: center; background: #05080a; }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
         @media (max-width: 992px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; } /* 2 cols on tablet */
-            .stat-item:nth-child(2) { border-right: none; }
-            .stat-item { border-bottom: 1px solid var(--border); }
-            .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+            .fin-grid { grid-template-columns: 1fr 1fr; }
+            .fin-item { border-bottom: 1px solid var(--border-color); }
+            .fin-item:nth-child(2) { border-right: none; }
+            .about-grid, .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .project-card { grid-template-columns: 1fr; }
+            .p-image { height: 250px; min-height: 250px; }
+            .section-header h2 { font-size: 2rem; }
         }
 
         @media (max-width: 768px) {
-            /* Header */
+            .hero h1 { font-size: 2.5rem; }
             .hamburger { display: block; }
-            .nav-menu {
-                position: fixed; top: var(--header-height); left: 0; width: 100%;
-                background: var(--white); flex-direction: column; padding: 20px;
-                gap: 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-                display: none; /* Hidden by default */
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: var(--bg-white); flex-direction: column; padding: 80px 40px;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1); transition: 0.3s; z-index: 999;
             }
-            .nav-menu.active { display: flex; }
-            .nav-menu a { padding: 15px; border-bottom: 1px solid #eee; width: 100%; text-align: center; }
-
-            /* Hero */
-            .hero { padding: 80px 0 40px; min-height: auto; }
-            .hero h1 { font-size: 1.8rem; }
-            
-            /* Stats */
-            .stats-grid { grid-template-columns: 1fr; } /* 1 col on mobile */
-            .stat-item { border-right: none !important; border-bottom: 1px solid var(--border); }
-            
-            /* About & Projects */
-            .about-grid, .project-card { grid-template-columns: 1fr; }
-            .project-img { height: 200px; }
-            
-            /* Typography & Spacing */
-            .section-header h2 { font-size: 1.6rem; }
-            .section-padding { padding: 40px 0; }
+            .nav-links.active { right: 0; }
+            .fin-grid { grid-template-columns: 1fr; }
+            .fin-item { border-right: none; }
+            .container { width: 92%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container">
-            <i class="fas fa-certificate"></i> MSME: UDYAM-MH-18-0084813 &nbsp;|&nbsp; 
-            <i class="fas fa-phone"></i> +91 99672 75522
+    <div class="top-ticker">
+        <div class="container ticker-content">
+            <span><i class="fas fa-certificate"></i> UDYAM-MH-18-0084813 | GST: 27ASAPS3742B1ZZ</span>
+            <span><i class="fas fa-phone-alt"></i> +91 99672 75522</span>
         </div>
     </div>
 
     <header>
-        <div class="container navbar">
+        <div class="container nav-wrapper">
             <div class="logo">
                 SUYESH ENGINEERING
-                <span>Precision Fabrication Since 1994</span>
+                <span>FABRICATION & SOLUTIONS</span>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
             </div>
-            <nav class="nav-menu" id="navMenu">
-                <a href="#home" onclick="toggleMenu()">Home</a>
-                <a href="#about" onclick="toggleMenu()">About</a>
-                <a href="#projects" onclick="toggleMenu()">Projects</a>
-                <a href="#services" onclick="toggleMenu()">Services</a>
-                <a href="#contact" onclick="toggleMenu()" style="color: var(--secondary); font-weight: 700;">Contact Us</a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#about">Company Profile</a>
+                <a href="#projects">Major Projects</a>
+                <a href="#stats">Financials</a>
+                <a href="#contact" class="btn">Contact Us</a>
             </nav>
         </div>
     </header>
 
     <section id="home" class="hero">
-        <div class="container">
-            <h1>Engineering Excellence &<br>Fabrication Solutions</h1>
-            <p>Trusted Partner of Bharat Petroleum (BPCL) with 30+ years of expertise in Piping, Structural Works, and Safety Infrastructure.</p>
-            <div class="hero-badges">
-                <div class="badge"><i class="fas fa-check-circle"></i> BPCL Approved</div>
-                <div class="badge"><i class="fas fa-tools"></i> 25+ Major Projects</div>
-                <div class="badge"><i class="fas fa-shield-alt"></i> Safety First</div>
+        <div class="container hero-content">
+            <span class="hero-badge">Est. 1994 | 30+ Years of Excellence</span>
+            <h1>PRECISION ENGINEERING FOR CRITICAL INFRASTRUCTURE</h1>
+            <p>MSME-Certified Partner of Bharat Petroleum (BPCL). Delivering fabrication, piping, and structural safety solutions with zero compliance issues.</p>
+            <div>
+                <a href="#projects" class="btn">View Project Portfolio</a>
+                <a href="#contact" class="btn" style="background: transparent; border: 2px solid white; margin-left: 15px;">Get Quote</a>
             </div>
         </div>
     </section>
 
-    <div class="container stats-container">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <strong>1994</strong>
-                <span>Est. Year</span>
+    <section id="stats" class="container financials">
+        <div class="fin-grid">
+            <div class="fin-item">
+                <i class="fas fa-chart-line fin-icon"></i>
+                <span class="fin-value">₹1.88 Cr</span>
+                <span class="fin-growth"><i class="fas fa-arrow-up"></i> +38% YoY Growth</span>
+                <span class="fin-label">Annual Turnover (23-24)</span>
             </div>
-            <div class="stat-item">
-                <strong>₹1.88 Cr</strong>
-                <span>Turnover</span>
+            <div class="fin-item">
+                <i class="fas fa-hand-holding-usd fin-icon"></i>
+                <span class="fin-value">3.45</span>
+                <span class="fin-label">Current Ratio (Liquidity)</span>
+                <span class="fin-growth">Debt-Free Operation</span>
             </div>
-            <div class="stat-item">
-                <strong>304733</strong>
-                <span>BPCL Vendor ID</span>
+            <div class="fin-item">
+                <i class="fas fa-project-diagram fin-icon"></i>
+                <span class="fin-value">25+</span>
+                <span class="fin-label">BPCL Projects Executed</span>
+                <span class="fin-growth">Vendor Code: 304733</span>
             </div>
-            <div class="stat-item">
-                <strong>48%</strong>
-                <span>Growth (CAGR)</span>
+            <div class="fin-item">
+                <i class="fas fa-wallet fin-icon"></i>
+                <span class="fin-value">₹44.3 L</span>
+                <span class="fin-label">Net Worth (2024)</span>
+                <span class="fin-growth">Consistently Profitable</span>
             </div>
         </div>
-    </div>
+    </section>
 
-    <section id="about" class="section-padding">
+    <section id="about" class="section-padding bg-white">
         <div class="container about-grid">
-            <div class="about-text">
-                <div class="section-header" style="text-align: left; margin-bottom: 20px;">
+            <div class="about-content">
+                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
                     <h2>Company Overview</h2>
-                    <p style="margin-left: 0;">Proprietor: Mr. Shivaji Sangale</p>
+                    <div class="divider" style="margin: 0 0 20px;"></div>
+                    <p style="margin: 0;">Proprietor: Mr. Shivaji Sangale</p>
                 </div>
-                <p><strong>Suyesh Engineering</strong> is an MSME-registered Micro Enterprise specializing in industrial fabrication, piping, and civil structural works. We maintain a debt-free operation with a focus on financial stability and technical precision.</p>
-                <div class="cert-box">
-                    <div><i class="fas fa-file-contract"></i> <strong>GST:</strong> 27ASAPS3742B1ZZ</div>
-                    <div><i class="fas fa-landmark"></i> <strong>Bank:</strong> Bank of Maharashtra</div>
-                    <div><i class="fas fa-hard-hat"></i> <strong>Status:</strong> Fully Compliant (EPF/ESIC)</div>
+                <p><strong>Suyesh Engineering</strong> is a premier MSME-registered Micro Enterprise specializing in high-stakes industrial fabrication. With over three decades of operational history, we have established ourselves as a reliable partner for Oil & Gas infrastructure.</p>
+                <br>
+                <p>We do not just execute projects; we ensure **financial stability, safety compliance, and timely delivery**. Our seamless integration with BPCL’s digital systems (GeM, TReDS) makes us a preferred vendor for complex engineering tasks.</p>
+
+                <div class="cert-list">
+                    <div class="cert-item">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <strong>MSME Registered</strong>
+                            <div style="font-size: 0.85rem; color: #666;">UDYAM-MH-18-0084813</div>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-file-invoice"></i>
+                        <div>
+                            <strong>GST Compliant</strong>
+                            <div style="font-size: 0.85rem; color: #666;">27ASAPS3742B1ZZ</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="about-img">
-                <img src="https://placehold.co/600x400/E3F2FD/002D62?text=Fabrication+Workshop" alt="Workshop">
+                <img src="https://placehold.co/600x500/101820/FFFFFF?text=Engineering+Workshop+View" alt="Workshop">
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section-padding bg-white">
+    <section id="projects" class="section-padding">
         <div class="container">
             <div class="section-header">
                 <h2>Featured Projects</h2>
-                <p>Delivering high-value execution for BPCL across India</p>
+                <div class="divider"></div>
+                <p>High-value execution for Bharat Petroleum Corporation Ltd.</p>
             </div>
 
             <div class="project-card">
-                <div class="project-img">
-                    <img src="https://placehold.co/800x600/002D62/FFFFFF?text=Pipeline+Work" alt="Pipeline">
+                <div class="p-image">
+                    <img src="https://placehold.co/800x600/2C3E50/FFFFFF?text=Pipeline+Work+Site" alt="Pipeline Work">
+                    <span class="p-badge">COMPLETED</span>
                 </div>
-                <div class="project-content">
-                    <span class="po-tag">PO: 4510629223</span>
+                <div class="p-content">
                     <h3>Underground Pipeline Dismantling</h3>
-                    <p style="color:var(--light-text); font-size:0.9rem; margin-bottom:10px;"><strong>Location:</strong> BPCL Pakni Depot, Solapur | <strong>Value:</strong> ₹9.32 Lakhs</p>
-                    <ul class="project-list">
-                        <li><i class="fas fa-check"></i> Dismantling 2,250+ Meters of Pipeline.</li>
-                        <li><i class="fas fa-check"></i> Gas cutting and safe removal of flanges.</li>
-                        <li><i class="fas fa-check"></i> Site restoration and backfilling.</li>
-                    </ul>
+                    <div class="p-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Pakni Depot, Solapur</span>
+                        <span><i class="fas fa-rupee-sign"></i> 9.32 Lakhs</span>
+                    </div>
+                    <p><strong>PO No: 4510629223</strong></p>
+                    <p style="margin-top: 10px; color: #555;">Dismantling of 2,250+ meters of underground pipelines (14" HSD, 10" SKO). Scope included excavation, gas cutting, removing flanges, and site restoration/backfilling.</p>
+                    <div style="margin-top: 20px;">
+                        <span style="font-size: 0.8rem; background: #eee; padding: 5px 10px; margin-right: 5px;">Excavation</span>
+                        <span style="font-size: 0.8rem; background: #eee; padding: 5px 10px;">Gas Cutting</span>
+                    </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-img">
-                    <img src="https://placehold.co/800x600/F57C00/FFFFFF?text=Pump+Installation" alt="Pump">
+                <div class="p-image">
+                    <img src="https://placehold.co/800x600/C5A059/FFFFFF?text=Fuel+Pump+Installation" alt="NSP Work">
+                    <span class="p-badge">COMPLETED</span>
                 </div>
-                <div class="project-content">
-                    <span class="po-tag">PO: 4508222975</span>
-                    <h3>NSP Installation Work</h3>
-                    <p style="color:var(--light-text); font-size:0.9rem; margin-bottom:10px;"><strong>Location:</strong> Sunil Service Station, Indore | <strong>Value:</strong> ₹8.12 Lakhs</p>
-                    <ul class="project-list">
-                        <li><i class="fas fa-check"></i> Installation of Dispensing Units.</li>
-                        <li><i class="fas fa-check"></i> 1200 RM of electrical cabling.</li>
-                        <li><i class="fas fa-check"></i> Civil inspection chambers & flooring.</li>
-                    </ul>
+                <div class="p-content">
+                    <h3>Non-Space Pump (NSP) Installation</h3>
+                    <div class="p-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sunil Service Station, Indore</span>
+                        <span><i class="fas fa-rupee-sign"></i> 8.12 Lakhs</span>
+                    </div>
+                    <p><strong>PO No: 4508222975</strong></p>
+                    <p style="margin-top: 10px; color: #555;">Complete installation of dispensing units, 1200 RM of electrical armoured cabling, and construction of inspection chambers and concrete flooring.</p>
                 </div>
             </div>
 
-            <h3 style="margin: 40px 0 20px;">Other Major Works</h3>
-            <div class="table-responsive">
+            <h3 style="margin: 50px 0 20px;">Executed Project Archive</h3>
+            <div class="table-wrapper">
                 <table>
                     <thead>
                         <tr>
-                            <th>Project Name</th>
-                            <th>Scope</th>
+                            <th>Project Scope</th>
                             <th>PO Number</th>
-                            <th>Value</th>
+                            <th>Scope Details</th>
+                            <th>Value (INR)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>STP Upgradation</td>
-                            <td>Civil Infra</td>
-                            <td>4509763999</td>
-                            <td class="val-col">₹47.30 L</td>
+                            <td><span class="po-cell">4509763999</span></td>
+                            <td>Civil Infrastructure & Plumbing</td>
+                            <td class="val-cell">47.30 Lakhs</td>
                         </tr>
                         <tr>
                             <td>Firefighting AMC</td>
-                            <td>Mech Maintenance</td>
-                            <td>4600709840</td>
-                            <td class="val-col">₹47.00 L</td>
+                            <td><span class="po-cell">4600709840</span></td>
+                            <td>Comprehensive Mech System Maintenance</td>
+                            <td class="val-cell">47.00 Lakhs</td>
                         </tr>
                         <tr>
-                            <td>Elec. Upgradation</td>
-                            <td>Cable Laying</td>
-                            <td>-</td>
-                            <td class="val-col">₹16.37 L</td>
+                            <td>Electrical Upgradation</td>
+                            <td><span class="po-cell">CFS II</span></td>
+                            <td>Cable Laying, GI Tray Installation</td>
+                            <td class="val-cell">16.37 Lakhs</td>
+                        </tr>
+                        <tr>
+                            <td>Bio-Diesel Tank Conversion</td>
+                            <td><span class="po-cell">--</span></td>
+                            <td>Fabrication & Piping</td>
+                            <td class="val-cell">15.86 Lakhs</td>
+                        </tr>
+                        <tr>
+                            <td>Brick Pitching Work</td>
+                            <td><span class="po-cell">4509520458</span></td>
+                            <td>Civil Works & Excavation</td>
+                            <td class="val-cell">4.79 Lakhs</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
         </div>
     </section>
 
-    <section id="services" class="section-padding">
+    <section class="section-padding trust-section">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Comprehensive Industrial Solutions</p>
+                <h2 style="color: white;">Why BPCL Trusts Us</h2>
+                <div class="divider"></div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-tools service-icon"></i>
-                    <h4>Fabrication & Piping</h4>
-                    <p>Heavy fabrication, structural steel works, and industrial piping (MS/CS/SS) for oil depots.</p>
+            <div class="trust-grid">
+                <div class="trust-box">
+                    <h3><i class="fas fa-history"></i> Proven Track Record</h3>
+                    <p>Successfully executed 25+ critical infrastructure projects for BPCL since 2020 with a 100% completion rate.</p>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-gas-pump service-icon"></i>
-                    <h4>NRO Setup</h4>
-                    <p>End-to-end New Retail Outlet setup including canopy erection, pump installation, and signage.</p>
+                <div class="trust-box">
+                    <h3><i class="fas fa-file-contract"></i> Strict Compliance</h3>
+                    <p>Adherence to GST invoicing, SFMS Bank Guarantees, and zero non-compliance in safety audits.</p>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-fire-extinguisher service-icon"></i>
-                    <h4>Fire Safety</h4>
-                    <p>Installation and AMC of firefighting networks, hydrant lines, and safety mechanical systems.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-paint-roller service-icon"></i>
-                    <h4>Civil & Painting</h4>
-                    <p>Industrial cabling, panel installation, brick pitching, excavation, and specialized painting.</p>
+                <div class="trust-box">
+                    <h3><i class="fas fa-clock"></i> Timely Execution</h3>
+                    <p>Record of on-time delivery for high-pressure projects like OWS modification and Fire Water Pipeline testing.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="footer">
+    <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h4>Suyesh Engineering</h4>
-                    <p>Precision in Fabrication & Engineering Solutions Since 1994. MSME Certified & BPCL Trusted Vendor.</p>
+                    <span class="footer-logo">SUYESH ENGINEERING</span>
+                    <p>Precision in Fabrication & Engineering Solutions since 1994. Building the infrastructure that powers the nation.</p>
                 </div>
                 <div>
-                    <h4>Contact Us</h4>
+                    <h4>Quick Contact</h4>
                     <ul class="footer-contact">
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Sinhagadh Co-op Hsg. Soc., Tardeo, Mumbai - 400034</span>
-                        </li>
-                        <li>
                             <i class="fas fa-phone"></i>
-                            <span>+91 99672 75522 | 84240 05611</span>
+                            <div>
+                                <div>+91 99672 75522</div>
+                                <div>+91 84240 05611</div>
+                            </div>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
-                            <span>suyashengineering63@yahoo.com</span>
+                            suyashengineering63@yahoo.com
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h4>Quick Links</h4>
-                    <ul style="line-height: 2;">
-                        <li><a href="#home" style="color:#bbb;">Home</a></li>
-                        <li><a href="#projects" style="color:#bbb;">Our Projects</a></li>
-                        <li><a href="#services" style="color:#bbb;">Services</a></li>
+                    <h4>Head Office</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Sinhagadh Co-op Hsg. Soc.,<br>Tardeo, Mumbai - 400034</span>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
+        </div>
+        <div class="copyright">
+            <div class="container">
                 <p>&copy; 2026 Suyesh Engineering. All Rights Reserved.</p>
             </div>
         </div>
@@ -460,8 +518,8 @@
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('navMenu');
-            menu.classList.toggle('active');
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('active');
         }
     </script>
 
