@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPCL Vendor Services | NRO & Facility Management</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- 1. CSS VARIABLES (Theme Colors) --- */
+        :root {
+            --primary-color: #003A8F;   /* BPCL Dark Blue */
+            --secondary-color: #F57C00; /* Safety Orange */
+            --bg-light: #F5F7FA;        /* Light Grey Background */
+            --text-dark: #1F2933;       /* Dark Text */
+            --text-light: #5E6C84;      /* Muted Text */
+            --white: #FFFFFF;
+            --container-width: 1200px;
+        }
+
+        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #d66c00;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* --- 3. HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i { color: var(--secondary-color); }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--secondary-color); }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- 4. HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0, 58, 143, 0.8), rgba(0, 58, 143, 0.8)), 
+                        url('https://placehold.co/1920x1080/003A8F/FFFFFF?text=Fuel+Station+Background');
+            background-size: cover;
+            background-position: center;
+            height: 80vh; /* Viewport Height */
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- 5. ABOUT SUMMARY --- */
+        .about {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-text h3 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-box strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        /* --- 6. SERVICES --- */
+        .services {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+            border-top: 4px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* --- 7. WORK GALLERY (NRO) --- */
+        .gallery {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 58, 143, 0.8);
+            color: var(--white);
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        /* --- 8. PO PROOF SECTION --- */
+        .po-section {
+            padding: 80px 0;
+            background-color: var(--bg-light);
+        }
+
+        .po-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .po-card {
+            background: var(--white);
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .po-card img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+        }
+
+        .po-card span {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        /* --- 9. CONTACT --- */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info-box {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        /* --- 10. FOOTER --- */
+        footer {
+            background-color: #0d1b2a;
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            
+            .hamburger { display: block; color: var(--primary-color); }
+            
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                display: none;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active { display: flex; }
+
+            .hero h1 { font-size: 2rem; }
+            .about-grid, .contact-container { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <i class="fas fa-gas-pump"></i> VENDOR SERVICES
+            </div>
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">NRO Gallery</a></li>
+                    <li><a href="#po">Work Orders</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Expert Facility & Manpower Services for BPCL NROs</h1>
+            <p>Authorized Vendor providing top-tier NRO creation, housekeeping, maintenance, and skilled manpower solutions.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Call Now</a>
+                <a href="#services" class="btn btn-outline">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container section-title">
+            <h2>About Our Company</h2>
+            <p>Committed to Safety, Quality, and BPCL Standards</p>
+        </div>
+        <div class="container about-grid">
+            <div class="about-img">
+                <img src="https://placehold.co/600x400/F5F7FA/003A8F?text=Professional+Team+Meeting" alt="Team">
+            </div>
+            <div class="about-text">
+                <h3>Reliable Partner in Petroleum Retail Services</h3>
+                <p>We are a dedicated facility management and manpower agency, approved by BPCL. With years of experience in New Retail Outlet (NRO) setup and maintenance, we ensure your operations run smoothly, efficiently, and safely.</p>
+                <br>
+                <p>Our team is trained to handle the specific requirements of PSU environments, strictly adhering to safety protocols and operational ethics.</p>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <strong>50+</strong>
+                        <span>NROs Completed</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>5+</strong>
+                        <span>Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container section-title">
+            <h2>Our Core Services</h2>
+            <p>Comprehensive solutions for Retail Outlets and Corporate Offices</p>
+        </div>
+        <div class="container service-grid">
+            <div class="service-card">
+                <i class="fas fa-hard-hat"></i>
+                <h3>NRO Creation & Setup</h3>
+                <p>Complete support for New Retail Outlets including pre-opening readiness, signage installation, and site preparation.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-broom"></i>
+                <h3>Housekeeping</h3>
+                <p>Daily and periodic cleaning services for offices and outlets. We ensure high standards of hygiene and sanitation.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>Maintenance</h3>
+                <p>Reliable electrical, plumbing, and general repair services to keep your facility infrastructure in top condition.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-user-tie"></i>
+                <h3>Manpower & Office Boy</h3>
+                <p>Supply of trained office boys and support staff for day-to-day operations, pantry management, and document handling.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container section-title">
+            <h2>NRO Work Gallery</h2>
+            <p>Visual proof of our on-site execution</p>
+        </div>
+        <div class="container gallery-grid">
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x300/003A8F/FFFFFF?text=NRO+Site+Exterior" alt="NRO Work">
+                <div class="gallery-caption">Site Exterior Formatting</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x300/003A8F/FFFFFF?text=Electrical+Maintenance" alt="NRO Work">
+                <div class="gallery-caption">Electrical Setup</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x300/003A8F/FFFFFF?text=Housekeeping+Staff" alt="NRO Work">
+                <div class="gallery-caption">Housekeeping Team</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/400x300/003A8F/FFFFFF?text=Signage+Installation" alt="NRO Work">
+                <div class="gallery-caption">Signage Installation</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="po" class="po-section">
+        <div class="container section-title">
+            <h2>Work Orders</h2>
+            <p>Authorized Purchase Orders (POs) from BPCL</p>
+        </div>
+        <div class="container po-grid">
+            <div class="po-card">
+                <img src="https://placehold.co/300x400/E0E0E0/333333?text=PO+Scan+1" alt="PO 1">
+                <span>Facility PO - 2024</span>
+            </div>
+            <div class="po-card">
+                <img src="https://placehold.co/300x400/E0E0E0/333333?text=PO+Scan+2" alt="PO 2">
+                <span>Manpower PO - 2024</span>
+            </div>
+            <div class="po-card">
+                <img src="https://placehold.co/300x400/E0E0E0/333333?text=PO+Scan+3" alt="PO 3">
+                <span>Maintenance PO - 2023</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container section-title">
+            <h2>Contact Us</h2>
+            <p>Get in touch for service enquiries</p>
+        </div>
+        <div class="container contact-container">
+            <div class="contact-info-box">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@vendorservices.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Office Address</h4>
+                        <p>Shop No. 4, Industrial Area,<br>Mumbai, Maharashtra - 400001</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Mon - Sat: 9:00 AM - 7:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160990886!2d72.74109968997637!3d19.082197839097745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>VENDOR SERVICES</h3>
+                <p>Trusted BPCL NRO & Facility Partner</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Vendor Services. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Close mobile menu on click
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
