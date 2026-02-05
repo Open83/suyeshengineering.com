@@ -14,99 +14,1411 @@
     <style>
         /* ===== RESET & VARIABLES ===== */
         :root {
+            /* Modern Color Palette with Professional Gradients */
             --primary-navy: #0a1628;
             --primary-blue: #1e3a8a;
             --accent-orange: #ff6b35;
             --accent-gold: #fbbf24;
             --accent-green: #10b981;
             --deep-teal: #0d9488;
+            
+            /* Backgrounds */
             --bg-light: #f8fafc;
             --bg-white: #ffffff;
             --bg-dark: #0f172a;
             --bg-card: #ffffff;
+            
+            /* Text Colors */
             --text-primary: #1e293b;
             --text-secondary: #64748b;
             --text-muted: #94a3b8;
             --text-white: #ffffff;
+            
+            /* Gradients */
             --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             --gradient-accent: linear-gradient(135deg, #ff6b35 0%, #fbbf24 100%);
             --gradient-dark: linear-gradient(135deg, #0a1628 0%, #1e3a8a 100%);
             --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.98) 100%);
+            
+            /* Shadows & Effects */
             --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
             --shadow-glow: 0 0 20px rgba(255, 107, 53, 0.3);
+            
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
+            
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: 'Poppins', sans-serif; color: var(--text-primary); line-height: 1.7; background-color: var(--bg-white); overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        img { max-width: 100%; height: auto; display: block; }
-        .container { width: 90%; max-width: 1280px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; position: relative; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* ===== ANNOUNCEMENT & HEADER ===== */
-        .announcement-bar { background: var(--gradient-dark); color: var(--text-white); padding: 12px 0; font-size: 0.85rem; font-weight: 500; text-align: center; position: relative; overflow: hidden; }
-        .announcement-content { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .announcement-badge { background: rgba(255, 107, 53, 0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; border: 1px solid rgba(255, 107, 53, 0.3); }
-        
-        header { position: sticky; top: 0; z-index: 1000; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(20px); box-shadow: var(--shadow-sm); transition: var(--transition); }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-        .logo { display: flex; align-items: center; gap: 15px; }
-        .logo-icon { width: 55px; height: 55px; background: var(--gradient-accent); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; color: white; box-shadow: var(--shadow-glow); font-family: 'Roboto Mono', monospace; }
-        .logo-text h1 { font-size: 1.4rem; font-weight: 800; background: var(--gradient-dark); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; }
-        .nav-links { display: none; align-items: center; gap: 35px; list-style: none; }
-        .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--text-primary); position: relative; padding: 5px 0; }
-        .btn-nav { background: var(--gradient-accent); color: white; padding: 12px 28px; border-radius: 50px; font-weight: 600; box-shadow: var(--shadow-md); border: none; cursor: pointer; }
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.7;
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* ===== ANIMATED BACKGROUND ELEMENTS ===== */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .bg-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-accent);
+            top: -200px;
+            right: -200px;
+            filter: blur(100px);
+        }
+
+        .bg-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-primary);
+            bottom: -150px;
+            left: -150px;
+            filter: blur(80px);
+        }
+
+        /* ===== TOP ANNOUNCEMENT BAR ===== */
+        .announcement-bar {
+            background: var(--gradient-dark);
+            color: var(--text-white);
+            padding: 12px 0;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            to { left: 100%; }
+        }
+
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .announcement-badge {
+            background: rgba(255, 107, 53, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: var(--shadow-glow);
+            font-family: 'Roboto Mono', monospace;
+            letter-spacing: -2px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--gradient-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .logo-tagline {
+            font-size: 0.7rem;
+            color: var(--accent-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .menu-toggle {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Mobile Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--bg-white);
+            box-shadow: var(--shadow-xl);
+            padding: 100px 30px 30px;
+            transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 18px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--bg-light);
+            transition: var(--transition);
+        }
+
+        .mobile-nav a:hover {
+            color: var(--accent-orange);
+            padding-left: 10px;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         /* ===== HERO SECTION ===== */
-        .hero { position: relative; min-height: 90vh; display: flex; align-items: center; background: var(--gradient-hero); color: white; overflow: hidden; padding: 120px 0 80px; }
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
-        .hero h2 { font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 25px; background: linear-gradient(to right, #ffffff, #e0e7ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; margin-top: 50px; }
-        .hero-stat-value { font-size: 2.5rem; font-weight: 800; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: block; }
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-hero);
+            color: white;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
 
-        /* ===== GALLERY STYLES ===== */
-        .gallery-filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
-        .filter-btn { padding: 10px 25px; border-radius: 50px; border: 2px solid var(--bg-light); background: white; font-weight: 600; cursor: pointer; transition: var(--transition); color: var(--text-secondary); }
-        .filter-btn.active, .filter-btn:hover { background: var(--gradient-accent); color: white; border-color: transparent; box-shadow: var(--shadow-md); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; transition: var(--transition); }
-        .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; height: 250px; cursor: pointer; box-shadow: var(--shadow-sm); opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-        .gallery-item.show { opacity: 1; transform: translateY(0); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 22, 40, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); }
-        .gallery-overlay span { color: white; font-weight: 600; border: 2px solid var(--accent-gold); padding: 8px 15px; border-radius: 5px; }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-footer { text-align: center; margin-top: 40px; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
 
-        /* Lightbox popup */
-        .lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); padding: 40px; box-sizing: border-box; align-items: center; justify-content: center; }
-        .lightbox-content { max-width: 90%; max-height: 90%; border-radius: 8px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
-        .close-lightbox { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(30deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02)),
+                linear-gradient(150deg, rgba(255, 255, 255, 0.02) 12%, transparent 12.5%, transparent 87%, rgba(255, 255, 255, 0.02) 87.5%, rgba(255, 255, 255, 0.02));
+            background-size: 80px 140px;
+            opacity: 0.3;
+        }
 
-        /* Existing Project & Financial Styles */
-        .section-header { text-align: center; max-width: 800px; margin: 0 auto 60px; }
-        .section-tag { display: inline-block; background: rgba(255, 107, 53, 0.1); color: var(--accent-orange); padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
-        .section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 20px; background: var(--gradient-dark); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .projects-showcase { display: grid; gap: 40px; }
-        .project-card { background: var(--bg-card); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); display: grid; grid-template-columns: 1fr; }
-        .financial-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 60px; }
-        .stat-card { background: var(--gradient-dark); padding: 35px 25px; border-radius: var(--radius-lg); text-align: center; color: white; }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
 
-        /* Mobile Adjustments */
-        @media (min-width: 768px) { .nav-links { display: flex; } .project-card { grid-template-columns: 400px 1fr; } }
-        @media (max-width: 767px) { 
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } 
-            .gallery-item { height: 160px; }
-            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-badge i {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .hero h2 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .hero-stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ===== TRUST BADGES ===== */
+        .trust-section {
+            background: white;
+            padding: 50px 0;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+
+        .trust-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .trust-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .trust-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+        }
+
+        .trust-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent-orange);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: var(--gradient-dark);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: var(--radius-md);
+            background: var(--gradient-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .feature-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+        }
+
+        /* ===== CAPABILITIES ===== */
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .capability-card {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-light) 100%);
+            padding: 35px 25px;
+            border-radius: var(--radius-lg);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .capability-card:hover {
+            border-color: var(--accent-orange);
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .capability-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .capability-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .capability-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== PROJECTS SECTION ===== */
+        .projects-showcase {
+            display: grid;
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-status {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-green);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-value {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            color: var(--accent-gold);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .project-content {
+            padding: 35px;
+        }
+
+        .project-header {
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: var(--accent-orange);
+        }
+
+        .project-desc {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent-orange);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+
+        /* ===== PROJECT TABLE ===== */
+        .projects-table {
+            margin-top: 60px;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .table-header {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 25px 30px;
+        }
+
+        .table-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        thead {
+            background: var(--bg-light);
+        }
+
+        th {
+            padding: 20px 25px;
+            text-align: left;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        td {
+            padding: 20px 25px;
+            border-bottom: 1px solid var(--bg-light);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr {
+            transition: var(--transition);
+        }
+
+        tbody tr:hover {
+            background: var(--bg-light);
+        }
+
+        .amount {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-green);
+            font-size: 1.05rem;
+        }
+
+        /* ===== FINANCIALS SECTION ===== */
+        .financial-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--gradient-dark);
+            padding: 35px 25px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .stat-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--accent-gold);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            font-family: 'Roboto Mono', monospace;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* ===== GROWTH CHART ===== */
+        .chart-container {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 350px;
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .bar-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .bar-value {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--accent-orange);
+            font-size: 1.1rem;
+        }
+
+        .bar-container {
+            width: 100%;
+            max-width: 120px;
+            background: var(--bg-light);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+
+        .bar-fill {
+            width: 100%;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-md) var(--radius-md) 0 0;
+            transition: height 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 -4px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .bar-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .chart-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px solid var(--bg-light);
+        }
+
+        .chart-note {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--bg-light);
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chart-note i {
+            color: var(--accent-green);
+            font-size: 1.2rem;
+        }
+
+        /* ===== COMPLIANCE SECTION ===== */
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .compliance-badge {
+            background: white;
+            padding: 25px;
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--accent-green);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: var(--transition);
+        }
+
+        .compliance-badge:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .compliance-icon {
+            font-size: 2rem;
+            color: var(--accent-green);
+        }
+
+        .compliance-info h4 {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .compliance-info p {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact-section {
+            background: var(--gradient-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-card-icon i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .contact-card a {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .contact-card a:hover {
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bg-dark);
+            color: var(--text-muted);
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        .footer-section h4 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+
+            .project-card {
+                grid-template-columns: 400px 1fr;
+            }
+
+            .project-image {
+                height: auto;
+            }
+
+            .chart {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 80px 0 60px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid,
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart {
+                flex-direction: column;
+                height: auto;
+                gap: 25px;
+            }
+
+            .bar-group {
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .bar-container {
+                max-width: none;
+                width: 60%;
+                height: 50px;
+                border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            }
+
+            .bar-fill {
+                height: 100% !important;
+                border-radius: 0 var(--radius-md) var(--radius-md) 0 !important;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                padding-right: 15px;
+            }
+
+            .bar-value {
+                order: -1;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .announcement-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ===== LOADING STATE ===== */
+        .loading {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .loading.loaded {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -126,108 +1438,425 @@
                     <div class="logo-icon">SE</div>
                     <div class="logo-text">
                         <h1>Suyesh Engineering</h1>
-                        <span style="font-size: 0.7rem; color: var(--accent-orange); font-weight: 600; text-transform: uppercase;">Since 1994</span>
+                        <span class="logo-tagline">Since 1994</span>
                     </div>
                 </a>
+
                 <ul class="nav-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Portfolio</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#capabilities">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#financials">Financials</a></li>
                     <li><button class="btn-nav" onclick="location.href='#contact'">Get Quote</button></li>
                 </ul>
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
         </div>
     </header>
 
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about" onclick="toggleMenu()">About Us</a>
+        <a href="#capabilities" onclick="toggleMenu()">Our Services</a>
+        <a href="#projects" onclick="toggleMenu()">Portfolio</a>
+        <a href="#financials" onclick="toggleMenu()">Financials</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+        <button class="btn-nav" style="width: 100%; margin-top: 20px;" onclick="toggleMenu(); location.href='#contact'">
+            Get a Quote
+        </button>
+    </div>
+
     <section class="hero">
+        <div class="hero-pattern"></div>
         <div class="container">
             <div class="hero-content">
-                <div style="background: rgba(255, 255, 255, 0.1); padding: 10px 20px; border-radius: 50px; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.2);">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
                     BPCL Approved Vendor Code: 304733
                 </div>
                 <h2>Reliable Engineering Solutions for Critical Infrastructure</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">Authorized MSME vendor specializing in fabrication and pipeline dismantling since 1994.</p>
+                <p class="hero-subtitle">
+                    An authorized MSME vendor specializing in fabrication, pipeline dismantling, 
+                    and structural safety for Bharat Petroleum and the Oil & Gas industry since 1994.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="location.href='#projects'">
+                        <i class="fas fa-briefcase"></i> View Portfolio
+                    </button>
+                    <button class="btn btn-outline" onclick="location.href='#contact'">
+                        <i class="fas fa-phone"></i> Contact Us
+                    </button>
+                </div>
+
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <span class="hero-stat-value">₹1.88Cr</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">Annual Turnover</span>
+                        <span class="hero-stat-label">Annual Turnover (FY 23-24)</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">25+</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">BPCL Projects</span>
+                        <span class="hero-stat-label">BPCL Projects Completed</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-value">30+</span>
-                        <span style="font-size: 0.8rem; opacity: 0.7;">Years Expertise</span>
+                        <span class="hero-stat-label">Years of Expertise</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value">Zero</span>
+                        <span class="hero-stat-label">Safety Incidents</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="section">
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="trust-title">MSME Certified</div>
+                    <div class="trust-desc">UDYAM-MH-18-0084813</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="trust-title">GST Registered</div>
+                    <div class="trust-desc">27ASAPS3742B1ZZ</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="trust-title">BPCL Partner</div>
+                    <div class="trust-desc">Vendor Code: 304733</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="trust-title">Strong Financials</div>
+                    <div class="trust-desc">Current Ratio: 3.45</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section bg-light">
+        <div class="bg-decoration bg-circle-1"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h3 class="section-title">Why We Are a Trusted BPCL Partner</h3>
+                <p class="section-subtitle">
+                    As a registered MSME, we focus on delivering high-quality fabrication and structural works, 
+                    supported by strong financial standing and a commitment to safety.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title">Three Decades of Experience</h3>
+                    <p class="feature-desc">
+                        With over 30 years in the industry since 1994, we provide reliable engineering 
+                        solutions for critical infrastructure needs, backed by a proven history of success.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Established track record since 1994</li>
+                        <li>25+ successful BPCL projects</li>
+                        <li>100% on-time delivery rate</li>
+                        <li>Zero safety incidents</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="feature-title">Regulatory Compliance & Quality</h3>
+                    <p class="feature-desc">
+                        We maintain strict compliance with BPCL's invoicing standards, SFMS Bank Guarantees, 
+                        and comprehensive safety documentation protocols.
+                    </p>
+                    <ul class="feature-list">
+                        <li>BPCL Vendor Code: 304733</li>
+                        <li>MSME & GST certified</li>
+                        <li>EPF/ESIC compliant</li>
+                        <li>Professional documentation</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3 class="feature-title">Financial Stability</h3>
+                    <p class="feature-desc">
+                        We operate with zero debt and high liquidity, ensuring that all projects proceed 
+                        smoothly without financial interruptions.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Net Worth: ₹44.3 Lakhs</li>
+                        <li>Current Ratio: 3.45</li>
+                        <li>Debt-free operations</li>
+                        <li>Bank Partner: Bank of Maharashtra</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Services</span>
+                <h3 class="section-title">Core Capabilities</h3>
+                <p class="section-subtitle">
+                    We offer a range of specialized engineering services designed for the oil & gas sector 
+                    and other industrial infrastructure projects.
+                </p>
+            </div>
+
+            <div class="capabilities-grid">
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h4 class="capability-title">Fabrication & Structural Works</h4>
+                    <p class="capability-desc">
+                        Custom fabrication and structural steel engineering tailored for industrial requirements.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-pipe"></i>
+                    </div>
+                    <h4 class="capability-title">Pipeline Works</h4>
+                    <p class="capability-desc">
+                        Expertise in underground pipeline installation, dismantling, and hydro-testing services.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-fire-extinguisher"></i>
+                    </div>
+                    <h4 class="capability-title">Fire Safety Systems</h4>
+                    <p class="capability-desc">
+                        Supply, installation, and annual maintenance of firefighting systems to ensure safety compliance.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-pump-medical"></i>
+                    </div>
+                    <h4 class="capability-title">NRO Pump Installation</h4>
+                    <p class="capability-desc">
+                        Complete installation and commissioning of New Retail Outlet pumps across India.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4 class="capability-title">Electrical Works</h4>
+                    <p class="capability-desc">
+                        Cable laying, panel commissioning, and electrical system upgrades.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4 class="capability-title">Civil & Construction</h4>
+                    <p class="capability-desc">
+                        Civil infrastructure services including RCC work, masonry, excavation, and restoration.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h4 class="capability-title">Painting Services</h4>
+                    <p class="capability-desc">
+                        Industrial painting and surface preparation for effective corrosion protection.
+                    </p>
+                </div>
+
+                <div class="capability-card">
+                    <div class="capability-icon">
+                        <i class="fas fa-chair"></i>
+                    </div>
+                    <h4 class="capability-title">Office Furniture Supply</h4>
+                    <p class="capability-desc">
+                        Procurement and installation of office furniture and storage systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section bg-light">
+        <div class="bg-decoration bg-circle-2"></div>
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Our Work</span>
                 <h3 class="section-title">Featured Projects</h3>
+                <p class="section-subtitle">
+                    A showcase of our high-value execution for Bharat Petroleum Corporation Ltd., 
+                    highlighting our technical capabilities.
+                </p>
             </div>
+
             <div class="projects-showcase">
                 <article class="project-card">
-                    <div style="background: #1e3a8a; height: 300px;"><img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80" style="width:100%; height:100%; object-fit:cover;"></div>
-                    <div style="padding: 30px;">
-                        <h3 style="margin-bottom: 15px;">Non-Space Pump Installation</h3>
-                        <p style="color: var(--text-secondary);">Complete dispensing system installation including piping, electrical cabling, and custom fabrication for Sunil Service Station.</p>
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=800&q=80" alt="NSP Installation Project">
+                        <span class="project-status">Completed</span>
+                        <span class="project-value">₹8.12 Lakhs</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Non-Space Pump Installation</h3>
+                            <div class="project-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-building"></i>
+                                    Sunil Service Station
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Indore, Madhya Pradesh
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-file-invoice"></i>
+                                    PO: 4508222975
+                                </span>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Installed a complete dispensing system comprising 2 Non-space Pump Units, 4 Display Units, 
+                            and 2 Hose Reel Units. The project involved 122 RM of piping, 1,200 RM of electrical cabling, 
+                            custom fabrication, civil works, panel commissioning, and heavy equipment support.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Civil Works</span>
+                            <span class="tag">Electrical</span>
+                            <span class="tag">Piping</span>
+                            <span class="tag">Fabrication</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1595116936382-7208d24597d3?auto=format&fit=crop&w=800&q=80" alt="Pipeline Dismantling Project">
+                        <span class="project-status">Completed</span>
+                        <span class="project-value">₹9.32 Lakhs</span>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Underground Pipeline Dismantling</h3>
+                            <div class="project-meta">
+                                <span class="meta-item">
+                                    <i class="fas fa-building"></i>
+                                    BPCL Pakni Depot
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Solapur, Maharashtra
+                                </span>
+                                <span class="meta-item">
+                                    <i class="fas fa-file-invoice"></i>
+                                    PO: 4510629223
+                                </span>
+                            </div>
+                        </div>
+                        <p class="project-desc">
+                            Executed the dismantling of over 2,250 meters of underground pipelines, including 14" HSD, 
+                            10" SKO, and 10" MS lines. The scope included excavation, gas cutting, removal of flanges 
+                            and fittings, and complete site restoration with backfilling.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Excavation</span>
+                            <span class="tag">Gas Cutting</span>
+                            <span class="tag">Pipeline Work</span>
+                            <span class="tag">Safety</span>
+                        </div>
                     </div>
                 </article>
             </div>
-        </div>
-    </section>
 
-    <section id="gallery" class="section" style="background: var(--bg-light);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Project Gallery</span>
-                <h3 class="section-title">Visual Showcase of Excellence</h3>
-                <p class="section-subtitle">Real on-site execution photos covering fabrication, pipeline works, and safety systems.</p>
-            </div>
-
-            <div class="gallery-filters">
-                <button class="filter-btn active" data-filter="all">All Photos</button>
-                <button class="filter-btn" data-filter="fab">Fabrication</button>
-                <button class="filter-btn" data-filter="pipe">Pipeline</button>
-                <button class="filter-btn" data-filter="civil">Civil Work</button>
-            </div>
-
-            <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery-item fab show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Fabrication">
-                    <div class="gallery-overlay"><span>Structural Steel</span></div>
+            <div class="projects-table">
+                <div class="table-header">
+                    <h3>Additional Major Projects Portfolio</h3>
                 </div>
-                <div class="gallery-item pipe show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?auto=format&fit=crop&w=600&q=80" alt="Pipeline">
-                    <div class="gallery-overlay"><span>Piping Works</span></div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Project Name</th>
+                                <th>Scope</th>
+                                <th style="text-align: right;">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Comprehensive AMC - Firefighting & Mechanical System</strong></td>
+                                <td>Annual maintenance contract for firefighting equipment</td>
+                                <td class="amount" style="text-align: right;">₹47.00 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>STP Upgradation & Civil Infrastructure</strong></td>
+                                <td>Sewage treatment plant upgradation and civil works</td>
+                                <td class="amount" style="text-align: right;">₹47.30 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CFS II Electrical Upgradation</strong></td>
+                                <td>Cable laying and GI tray installation</td>
+                                <td class="amount" style="text-align: right;">₹16.37 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bio-Diesel Tank Conversion</strong></td>
+                                <td>Tank fabrication and piping work</td>
+                                <td class="amount" style="text-align: right;">₹15.86 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brick Pitching Work, Pakni Depot</strong></td>
+                                <td>Civil and structural work</td>
+                                <td class="amount" style="text-align: right;">₹4.79 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>OWS Modification</strong></td>
+                                <td>RCC, plumbing, sluice gate installation</td>
+                                <td class="amount" style="text-align: right;">₹3.74 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Office Furniture Supply</strong></td>
+                                <td>Supply and installation of office furniture</td>
+                                <td class="amount" style="text-align: right;">₹3.59 L</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fire Water Pipeline Hydro Pressure Testing</strong></td>
+                                <td>Pipeline testing and certification</td>
+                                <td class="amount" style="text-align: right;">₹1.85 L</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="gallery-item civil show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=600&q=80" alt="Civil">
-                    <div class="gallery-overlay"><span>Site Construction</span></div>
-                </div>
-                <div class="gallery-item fab show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?auto=format&fit=crop&w=600&q=80" alt="Welding">
-                    <div class="gallery-overlay"><span>Precision Welding</span></div>
-                </div>
-                <div class="gallery-item pipe show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Hydro">
-                    <div class="gallery-overlay"><span>Hydro Testing</span></div>
-                </div>
-                <div class="gallery-item civil show" onclick="openLightbox(this.querySelector('img').src)">
-                    <img src="https://images.unsplash.com/photo-1590486803833-ffc6f78d360c?auto=format&fit=crop&w=600&q=80" alt="Foundation">
-                    <div class="gallery-overlay"><span>RCC Foundation</span></div>
-                </div>
-            </div>
-
-            <div class="gallery-footer">
-                <button class="btn-nav" id="loadMore">Load More Images (30+)</button>
             </div>
         </div>
     </section>
@@ -236,82 +1865,331 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">Financial Health</span>
-                <h3 class="section-title">Robust Financial Stability</h3>
+                <h3 class="section-title">Robust Financial Health</h3>
+                <p class="section-subtitle">
+                    We maintain consistent growth through operational efficiency and a zero-debt financial model.
+                </p>
             </div>
+
             <div class="financial-stats">
                 <div class="stat-card">
-                    <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-gold);">₹1.88Cr</div>
-                    <div>Annual Turnover</div>
+                    <i class="fas fa-chart-line stat-icon"></i>
+                    <div class="stat-value">₹1.88Cr</div>
+                    <div class="stat-label">Annual Turnover (FY 23-24)</div>
                 </div>
+
                 <div class="stat-card">
-                    <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-gold);">₹44.3L</div>
-                    <div>Net Worth (2024)</div>
+                    <i class="fas fa-wallet stat-icon"></i>
+                    <div class="stat-value">₹44.3L</div>
+                    <div class="stat-label">Net Worth (2024)</div>
                 </div>
+
                 <div class="stat-card">
-                    <div style="font-size: 2.5rem; font-weight: 800; color: var(--accent-gold);">3.45</div>
-                    <div>Current Ratio</div>
+                    <i class="fas fa-balance-scale stat-icon"></i>
+                    <div class="stat-value">3.45</div>
+                    <div class="stat-label">Current Ratio</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-percentage stat-icon"></i>
+                    <div class="stat-value">48.7%</div>
+                    <div class="stat-label">3-Year CAGR</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3 class="chart-title">Revenue Growth Trajectory</h3>
+                <div class="chart">
+                    <div class="bar-group">
+                        <div class="bar-value">₹93.7L</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" data-height="50"></div>
+                        </div>
+                        <div class="bar-label">FY 2021-22</div>
+                    </div>
+
+                    <div class="bar-group">
+                        <div class="bar-value">₹1.36Cr</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" data-height="73"></div>
+                        </div>
+                        <div class="bar-label">FY 2022-23</div>
+                    </div>
+
+                    <div class="bar-group">
+                        <div class="bar-value">₹1.88Cr</div>
+                        <div class="bar-container">
+                            <div class="bar-fill" data-height="100"></div>
+                        </div>
+                        <div class="bar-label">FY 2023-24</div>
+                    </div>
+                </div>
+
+                <div class="chart-footer">
+                    <div class="chart-note">
+                        <i class="fas fa-university"></i>
+                        <span>Banking Partner: Bank of Maharashtra</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightboxImg">
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Certifications</span>
+                <h3 class="section-title">Compliance & Certifications</h3>
+                <p class="section-subtitle">
+                    We are fully certified and compliant with all industry standards and regulatory requirements.
+                </p>
+            </div>
+
+            <div class="compliance-grid">
+                <div class="compliance-badge">
+                    <i class="fas fa-certificate compliance-icon"></i>
+                    <div class="compliance-info">
+                        <h4>MSME Udyam</h4>
+                        <p>UDYAM-MH-18-0084813</p>
+                    </div>
+                </div>
+
+                <div class="compliance-badge">
+                    <i class="fas fa-file-invoice compliance-icon"></i>
+                    <div class="compliance-info">
+                        <h4>GST Registration</h4>
+                        <p>27ASAPS3742B1ZZ</p>
+                    </div>
+                </div>
+
+                <div class="compliance-badge">
+                    <i class="fas fa-users compliance-icon"></i>
+                    <div class="compliance-info">
+                        <h4>EPF Registration</h4>
+                        <p>MHBAN0128709000</p>
+                    </div>
+                </div>
+
+                <div class="compliance-badge">
+                    <i class="fas fa-heartbeat compliance-icon"></i>
+                    <div class="compliance-info">
+                        <h4>ESIC Registration</h4>
+                        <p>34000355240000999</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section section">
+        <div class="container contact-content">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255, 255, 255, 0.1); color: var(--accent-gold);">Get In Touch</span>
+                <h3 class="section-title" style="color: white; -webkit-text-fill-color: white;">Start Your Project With Us</h3>
+                <p class="section-subtitle" style="color: rgba(255, 255, 255, 0.8);">
+                    Connect with our team to discuss your engineering needs and how we can support your goals.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Head Office</h3>
+                    <p>
+                        Sinhagadh Co-op Housing Society<br>
+                        Tardeo, Mumbai - 400034<br>
+                        Maharashtra, India
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone Numbers</h3>
+                    <p>
+                        <a href="tel:+919967275522">+91 99672 75522</a><br>
+                        <a href="tel:+918424005611">+91 84240 05611</a>
+                    </p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Address</h3>
+                    <p>
+                        <a href="mailto:suyashengineering63@yahoo.com">
+                            suyashengineering63@yahoo.com
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Suyesh Engineering</h3>
+                    <p>
+                        Providing precision engineering and fabrication services for critical infrastructure 
+                        projects since 1994. Your reliable partner in the oil & gas sector.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-angle-right"></i> About Us</a></li>
+                        <li><a href="#capabilities"><i class="fas fa-angle-right"></i> Our Services</a></li>
+                        <li><a href="#projects"><i class="fas fa-angle-right"></i> Projects Portfolio</a></li>
+                        <li><a href="#financials"><i class="fas fa-angle-right"></i> Financial Information</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Our Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#capabilities"><i class="fas fa-angle-right"></i> Fabrication Works</a></li>
+                        <li><a href="#capabilities"><i class="fas fa-angle-right"></i> Pipeline Installation</a></li>
+                        <li><a href="#capabilities"><i class="fas fa-angle-right"></i> Fire Safety Systems</a></li>
+                        <li><a href="#capabilities"><i class="fas fa-angle-right"></i> Civil & Structural</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Certifications</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> MSME Certified</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> GST Registered</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> BPCL Approved</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> EPF/ESIC Compliant</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Suyesh Engineering. All Rights Reserved. | Proprietor: Mr. Shivaji Sangale</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
     </div>
 
     <script>
-        // Gallery Filter Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        let isMenuOpen = false;
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                const filter = btn.getAttribute('data-filter');
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileNav.classList.add('active');
+                mobileOverlay.classList.add('active');
+                menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileNav.classList.remove('active');
+                mobileOverlay.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = '';
+            }
+        }
 
-                galleryItems.forEach(item => {
-                    if (filter === 'all' || item.classList.contains(filter)) {
-                        item.style.display = 'block';
-                        setTimeout(() => item.classList.add('show'), 10);
-                    } else {
-                        item.classList.remove('show');
-                        setTimeout(() => item.style.display = 'none', 500);
-                    }
-                });
+        menuToggle.addEventListener('click', toggleMenu);
+        mobileOverlay.addEventListener('click', toggleMenu);
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         });
 
-        // Lightbox Logic
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightboxImg');
-            lbImg.src = src;
-            lb.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = '';
-        }
-
-        // Simulating "Load More" for 30+ images
-        document.getElementById('loadMore').addEventListener('click', function() {
-            alert("This would trigger loading the remaining 24+ images from your server/folder.");
-            // In a real project, you would append more .gallery-item divs here.
+        // Animate Chart Bars on Load
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.bar-fill');
+            bars.forEach(bar => {
+                const height = bar.getAttribute('data-height');
+                setTimeout(() => {
+                    bar.style.height = height + '%';
+                }, 100);
+            });
         });
 
-        // Smooth Scrolling
+        // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        if (isMenuOpen) {
+                            toggleMenu();
+                        }
+                    }
+                }
             });
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('loaded');
+                }
+            });
+        }, observerOptions);
+
+        // Add loading class to elements
+        document.querySelectorAll('.feature-card, .capability-card, .project-card, .stat-card').forEach(el => {
+            el.classList.add('loading');
+            observer.observe(el);
         });
     </script>
 </body>
